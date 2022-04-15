@@ -16,14 +16,23 @@ function App() {
 
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has {points[selected]} votes</p>
-      <button onClick={() => {
-        const new_points = [...points];
-        new_points[selected] += 1;
-        setPoints(new_points);
-      }}>vote</button>
-      <button onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}>next anecdote</button>
+      <div>
+        <h1>anecdote of the day</h1>
+        <p>{anecdotes[selected]}</p>
+        <p>has {points[selected]} votes</p>
+        <button onClick={() => {
+          const new_points = [...points];
+          new_points[selected] += 1;
+          setPoints(new_points);
+        }}>vote</button>
+        <button onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}>next anecdote</button>
+      </div>
+
+      <div>
+        <h1>anecdote with most votes</h1>
+        <p>{anecdotes[points.indexOf(Math.max.apply(Math, points))]}</p>
+        <p>has {Math.max.apply(Math, points)} votes</p>
+      </div>
     </div>
   )
 }
